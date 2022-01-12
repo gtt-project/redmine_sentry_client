@@ -7,7 +7,15 @@ Redmine::Plugin.register :redmine_sentry_client do
   version '1.0.0'
   url 'https://github.com/jop-software/redmine_sentry_client'
   author_url 'http://www.jop-software.de'
-  settings default: {'empty' => true}, partial: 'settings/sentry_settings'
-end
 
-require 'redmine_sentry_client'
+  requires_redmine :version_or_higher => '4.2.0'
+
+  settings(
+    default: {
+      "dsn" => ENV["SENTRY_DSN"] || "",
+      "environment" => ENV["SENTRY_ENVIRONMENT"] || "",
+      "traces_sample_rate" => ENV["SENTRY_TRACES_SAMMPLE_RATE"] || 0.5,
+    },
+    partial: 'settings/sentry_settings'
+  )
+end
