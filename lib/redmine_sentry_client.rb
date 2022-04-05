@@ -1,5 +1,3 @@
-require 'redmine_sentry_client/helper/sentry_helper'
-
 module RedmineSentryClient
 
     class << self
@@ -19,5 +17,3 @@ module RedmineSentryClient
     end
 
 end
-
-RedmineSentryClient::Helper::SentryHelper.init()
