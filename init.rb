@@ -21,12 +21,4 @@ Redmine::Plugin.register :redmine_sentry_client do
   )
 end
 
-if Rails.version > '6.0' && Rails.autoloaders.zeitwerk_enabled?
-  Rails.application.config.after_initialize do
-    RedmineSentryClient::Helper::SentryHelper.init()
-  end
-else
-  Rails.configuration.to_prepare do
-    RedmineSentryClient::Helper::SentryHelper.init()
-  end
-end
+RedmineSentryClient::Helper::SentryHelper.init()
