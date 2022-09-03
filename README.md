@@ -4,11 +4,19 @@
 </div>
 
 [![GitHub license](https://img.shields.io/github/license/jop-software/redmine_sentry_client?style=for-the-badge)](https://github.com/jop-software/redmine-sentry-client/blob/main/LICENSE)
-![Redmine Version](https://img.shields.io/badge/Redmine-4.2-red?style=for-the-badge "redmine version")
+![Redmine Version](https://img.shields.io/badge/Redmine-5.0-red?style=for-the-badge "redmine version")
 
 ## Introduction
 This redmine plugin allows you to specify a sentry dsn, to report errors.  
-The plugin is tested with redmine version **4.2**
+The plugin is tested with redmine version **5.0**
+
+## Redmine Versions
+
+
+| Plugin Version | Redmine Version |
+|---|---|
+| 1.x | 4.x |
+| 2.x | 5.x |
 
 ## Installation
 You can follow the default way to install redmine plugins.
@@ -20,6 +28,12 @@ You can follow the default way to install redmine plugins.
 ## Configuration
 Please provide you'r sentry dsn in the plugin configuration.  
 Keep in mind to restart redmine after adding the DSN, because the sentry client only gets registerd if this configuration is provided
+
+You also can configure some parts with environment variables:
+
+| Environment variable | Description | Default |
+| --- | --- | --- |
+| SENTRY_ACTIVE | Toogle weather the sentry integration should be active or not. | true |
 
 ## Test
 In the configuration of the plugin is a button to trigger a test error.  
