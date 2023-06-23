@@ -8,11 +8,7 @@ module RedmineSentryClient
     # return SENTRY_ACTIVE environment variable.
     # If the environment variable is not set, fallback to true.
     def active
-      if ENV['SENTRY_ACTIVE'].present?
-        ENV['SENTRY_ACTIVE']
-      else
-        'true'
-      end
+      ENV.fetch('SENTRY_ACTIVE', 'true').casecmp('true').zero?
     end
 
     def traces_sample_rate
@@ -26,7 +22,10 @@ module RedmineSentryClient
     def dsn
       Setting.plugin_redmine_sentry_client['dsn'] || ''
     end
+
+    def report_error(error)
+      SentryHelper.init_sentry unless @sentry_initialized
+      Sentry.capture_exception(error)
+    end
   end
 end
-
-RedmineSentryClient::Helper::SentryHelper.init
